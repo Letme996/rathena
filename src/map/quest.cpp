@@ -322,6 +322,7 @@ void quest_update_objective(TBL_PC *sd, int mob_id)
 //				intif_broadcast_obtain_special_item(sd, dropitem->nameid, dropitem->mob_id, ITEMOBTAIN_TYPE_MONSTER_ITEM);
 		}
 	}
+	pc_show_questinfo(sd);
 }
 
 /**
@@ -474,7 +475,7 @@ void quest_read_txtdb(void)
 			quest_id = atoi(str[0]);
 
 			if (quest_id < 0 || quest_id >= INT_MAX) {
-				ShowError("quest_read_txtdb: Invalid quest ID '%d' in '%s' line '%s' (min: 0, max: %d.)\n", quest_id, filename,ln, INT_MAX);
+				ShowError("quest_read_txtdb: Invalid quest ID '%d' in '%s' line '%d' (min: 0, max: %d.)\n", quest_id, filename, ln, INT_MAX);
 				continue;
 			}
 
